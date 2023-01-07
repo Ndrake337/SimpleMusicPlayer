@@ -1,10 +1,11 @@
 import { AudioRepository } from "../../entities/Audio/repositories/AudioRepositories";
+import { IAudioDTO } from "../../entities/Audio/repositories/interfaces/IAudioRepository";
 import { IRequest } from "./interfaces/expectedFormats";
 
-export class CreateAudioUseCase {
+export class CreateManyUseCase {
   constructor(private audioRepository: AudioRepository) {}
 
-  execute({ Name, Author, Path }: IRequest) {
-    this.audioRepository.create({ Name, Author, Path });
+  execute(audioArray: IAudioDTO[]) {
+    this.audioRepository.createMany(audioArray);
   }
 }

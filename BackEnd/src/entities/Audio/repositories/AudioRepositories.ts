@@ -27,6 +27,9 @@ export class AudioRepository implements IAudioRepository {
   }
   findByName(name: string): Audio {
     const audio = this.audioRepo.find((song) => song.Name === name);
+    if (!audio) {
+      throw new Error("Audio Not Founded");
+    }
     return audio;
   }
   createMany(audioArray: IAudioDTO[]): void {
@@ -36,6 +39,9 @@ export class AudioRepository implements IAudioRepository {
   }
   findByAuthor(author: string): Audio {
     const audio = this.audioRepo.find((song) => song.Author === author);
+    if (!audio) {
+      throw new Error("Audio Not Founded");
+    }
     return audio;
   }
 }
